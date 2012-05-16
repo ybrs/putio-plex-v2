@@ -63,7 +63,12 @@ def listItems(id, dir):
                 if 'audio' in item.content_type:                    
                     dir.Append(Function(TrackItem(Files, title=item.name), url=item.stream_url ))
                 elif 'video' in item.content_type:
-                    dir.Append(Function(VideoItem(Files, title=item.name, thumb=item.screenshot), url=item.stream_url ))
+                    if item.is_mp4_available:
+                        Log("playing mp4")
+                        dir.Append(Function(VideoItem(Files, title=item.name, thumb=item.screenshot), url=item.mp4_stream_url ))
+                    else:
+                        Log("playing stream")
+                        dir.Append(Function(VideoItem(Files, title=item.name, thumb=item.screenshot), url=item.stream_url ))
                 elif "application/x-directory" in item.content_type:
                     dir.Append(Function(DirectoryItem(Folders, title=item.name), id=item.id))
                 else:
