@@ -1,0 +1,9 @@
+[
+
+        {
+                "id":                   "oauth_key",
+                "label":                "Oauth",
+                "type":         "text",
+                "default":      "",
+        }
+]        
