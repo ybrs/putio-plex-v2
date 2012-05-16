@@ -37,13 +37,15 @@ def CreatePrefs():
 def MainMenu():
         global api
         dir = MediaContainer(noCache=True)        
-
+        
         if Prefs.Get('oauth_key'):
             api = putio2.Client(Prefs.Get('oauth_key').replace('-', ''))
             listItems(id=None, dir=dir)
             dir.Append(Function(DirectoryItem(DoLogout, title='logout')))
         else:
-            dir.Append(PrefsItem(title='login'))        
+            #dir.Append(Function(DirectoryItem(DoLogin, title='login')))
+            dir.Append(PrefsItem(title='Enter your access token'))        
+            dir.Append(Function(DirectoryItem(DoLogin, title="Sign in to Put.io", summary="", thumb=R(ICON_DEFAULT))))
         return dir
 
         
@@ -75,6 +77,12 @@ def Folders(sender, id):
 
 def Files(sender, url):
         return Redirect(url)
+
+def DoLogin(sender):
+    if Prefs.Get('oauth_key'):        
+        return Redirect(PLUGIN_PREFIX)
+    else:
+        return MessageContainer('Access Token', 'Please enter your access token!')
 
 
 def DoLogout(sender):
