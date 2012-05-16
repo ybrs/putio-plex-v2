@@ -40,7 +40,10 @@ def MainMenu():
         
         if Prefs.Get('oauth_key'):
             api = putio2.Client(Prefs.Get('oauth_key').replace('-', ''))
-            listItems(id=None, dir=dir)
+            try:
+                listItems(id=None, dir=dir)
+            except Exception as e:
+                pass                
             dir.Append(Function(DirectoryItem(DoLogout, title='logout')))
         else:
             #dir.Append(Function(DirectoryItem(DoLogin, title='login')))
