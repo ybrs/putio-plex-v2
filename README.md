@@ -10,6 +10,6 @@ Installation
 ==============
 Download as zip file, extract Putio.bundle folder to plugins folder (somewhere like C:\Documents and Settings\Administrator\Local Settings\Application Data\Plex Media Server\Plug-ins)
 
-Visit, http://splitjoin.com/putio-plex.php and enter the code in plex settings.
+Visit, http://put.io/v2/oauth2/apptoken/28 and enter the code in plex settings.
 
 Enjoy.
